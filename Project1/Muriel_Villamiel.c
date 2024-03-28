@@ -4,6 +4,11 @@
 #include <stdint.h>
 #include <time.h>
 
+void saxpy_c(float A, float X[], float Y[], float Z[], int n) {
+	for (int i = 0; i < n; ++i) {
+		Z[i] = (A * X[i]) + Y[i];
+	}
+}
 
 
 int main() {
@@ -42,9 +47,7 @@ int main() {
 	}
 
 	clock_t start = clock();
-	for (int i = 0; i < nVal; ++i) {
-		Z[i] = (A * X[i]) + Y[i];
-	}
+	saxpy_c(A, X, Y, Z, nVal);
 	clock_t end = clock();
 	double cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
 
