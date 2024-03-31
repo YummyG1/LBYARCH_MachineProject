@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <time.h>
 
+extern float asmfunc(float A, float X, float Y);
+
 void saxpy_c(float A, float X[], float Y[], float Z[], int n) {
 	for (int i = 0; i < n; ++i) {
 		Z[i] = (A * X[i]) + Y[i];
@@ -28,7 +30,7 @@ int main() {
 		 nVal*= 2;
 	}
 
-	printf("value %d \n", nVal);
+	printf("Value of vectors: %d \n", nVal);
 
 	X = (float*)malloc(nVal * sizeof(float));
 	Y = (float*)malloc(nVal * sizeof(float));
@@ -49,13 +51,29 @@ int main() {
 	clock_t start = clock();
 	saxpy_c(A, X, Y, Z, nVal);
 	clock_t end = clock();
-	double cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+	double cpu_time_usedC = ((double)(end - start)) / CLOCKS_PER_SEC;
 
-	printf("\nResult:\n");
+	printf("\nResult of C:\n");
 	for (int i = 0; i < 10; ++i) {
 		printf("%.2f ", Z[i]);
 	}
-	printf("\nExecution time: %f seconds\n", cpu_time_used);
+	printf("\nExecution time of C: %f seconds\n", cpu_time_usedC);
+
+	start = clock();
+	for (int i = 0; i < nVal; ++i) {
+		Z[i] = asmfunc(A, X[i], Y[i]);
+	}
+	end = clock();
+	double cpu_time_usedASM = ((double)(end - start)) / CLOCKS_PER_SEC;
+
+	printf("\nResult of ASM:\n");
+	for (int i = 0; i < 10; ++i) {
+		printf("%.2f ", Z[i]);
+	}
+	printf("\nExecution time of ASM: %f seconds\n", cpu_time_usedASM);
+
+
+
 
 	// Free the dynamically allocated memory when done
 	free(X);

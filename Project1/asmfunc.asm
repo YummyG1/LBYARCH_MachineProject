@@ -1,19 +1,14 @@
 ;assembly part using x84-x64
 
 section .data
-msg db "Hello World", 13, 10, 0
-
 section .text
 bits 64 
 default rel  ; to handle adress relocation
 
 
-global asmhello
-extern printf
+global asmfunc
 
-asmhello:
-	sub rsp, 8*5    ; caller
-	lea rcx, [msg]
-	call printf
-	add rsp, 8*5
+asmfunc:
+	mulss xmm0, xmm1;
+	addss xmm0, xmm2;
 	ret
