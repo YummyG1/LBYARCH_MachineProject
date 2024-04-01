@@ -53,11 +53,11 @@ int main() {
 	clock_t end = clock();
 	double cpu_time_usedC = ((double)(end - start)) / CLOCKS_PER_SEC;
 
-	printf("\nResult of C:\n");
+	printf("\nFirst 10 results in C:\n");
 	for (int i = 0; i < 10; ++i) {
 		printf("%.2f ", Z[i]);
 	}
-	printf("\nExecution time of C: %f seconds\n", cpu_time_usedC);
+	printf("\nExecution time in C: %f seconds\n", cpu_time_usedC);
 
 	start = clock();
 	for (int i = 0; i < nVal; ++i) {
@@ -66,14 +66,11 @@ int main() {
 	end = clock();
 	double cpu_time_usedASM = ((double)(end - start)) / CLOCKS_PER_SEC;
 
-	printf("\nResult of ASM:\n");
+	printf("\nFirst 10 results in ASM:\n");
 	for (int i = 0; i < 10; ++i) {
 		printf("%.2f ", Z[i]);
 	}
-	printf("\nExecution time of ASM: %f seconds\n", cpu_time_usedASM);
-
-
-
+	printf("\nExecution time in ASM: %f seconds\n", cpu_time_usedASM);
 
 	// Free the dynamically allocated memory when done
 	free(X);
