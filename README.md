@@ -1,4 +1,4 @@
-# LBYARCH MP#2 - DAXPY(A*X+Y)
+# LBYARCH MP#2 - SAXPY(A*X+Y)
 
 Performed by Gabriel Muriel & Denis Leeroi Villamiel of LBYARCH S13
 
