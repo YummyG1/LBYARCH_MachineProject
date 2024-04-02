@@ -73,8 +73,6 @@ int main() {
 	printf("\nExecution time of ASM: %f seconds\n", cpu_time_usedASM);
 
 
-
-
 	// Free the dynamically allocated memory when done
 	free(X);
 	free(Y);
