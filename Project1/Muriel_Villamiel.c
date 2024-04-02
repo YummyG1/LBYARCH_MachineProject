@@ -37,6 +37,7 @@ int main() {
 	}
 
 	printf("Value of vectors: %d \n", nVal);
+	printf("-------------------------------------------\n");
 
 	X = (float*)malloc(nVal * sizeof(float));
 	Y = (float*)malloc(nVal * sizeof(float));
@@ -65,17 +66,16 @@ int main() {
 		cpu_time_usedC_overall += cpu_time_usedC;
 
 	}
-
 	cpu_time_used_C_avg = cpu_time_usedC_overall / 30;
 
-	printf("\nFirst 10 results in C:\n");
+	printf("First 10 results in C:\n");
 	for (int i = 0; i < 10; ++i) 
 	{
 		printf("%.2f ", Z[i]);
 	}
 
-	printf("\nOverall execution time in C with a vector size of 2^%d: %f seconds\n", nExp, cpu_time_usedC_overall);
-	printf("Average execution time in C: %f", cpu_time_used_C_avg);
+	printf("\n\nAverage execution time in C with a vector size of 2^%d: %f", nExp, cpu_time_used_C_avg);
+	printf("\n-------------------------------------------------------------------------------");
 
 	for (int i = 0; i < 30; i++) 
 	{
@@ -88,16 +88,15 @@ int main() {
 		cpu_time_usedASM_overall += cpu_time_usedASM;
 
 	}
-	printf("\n");
+	cpu_time_used_ASM_avg = cpu_time_usedASM_overall / 30;
+
 	printf("\nFirst 10 results in ASM:\n");
 	for (int i = 0; i < 10; ++i) {
 		printf("%.2f ", Z[i]);
 	}
 	
-	cpu_time_used_ASM_avg = cpu_time_usedASM_overall / 30;
 
-	printf("\nOverall execution time in ASM with a vector size of 2^%d: %f seconds\n", nExp, cpu_time_usedASM_overall);
-	printf("Average execution time in ASM: %f", cpu_time_used_ASM_avg);
+	printf("\n\nAverage execution time in ASM with a vector size of 2^%d: %f\n", nExp, cpu_time_used_ASM_avg);
 
 
 	// Free the dynamically allocated memory when done
