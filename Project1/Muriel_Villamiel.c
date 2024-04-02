@@ -88,7 +88,7 @@ int main() {
 		cpu_time_usedASM_overall += cpu_time_usedASM;
 
 	}
-
+	printf("\n");
 	printf("\nFirst 10 results in ASM:\n");
 	for (int i = 0; i < 10; ++i) {
 		printf("%.2f ", Z[i]);
@@ -97,7 +97,7 @@ int main() {
 	cpu_time_used_ASM_avg = cpu_time_usedASM_overall / 30;
 
 	printf("\nOverall execution time in ASM with a vector size of 2^%d: %f seconds\n", nExp, cpu_time_usedASM_overall);
-	printf("Average execution time in C: %f", cpu_time_used_ASM_avg);
+	printf("Average execution time in ASM: %f", cpu_time_used_ASM_avg);
 
 
 	// Free the dynamically allocated memory when done
